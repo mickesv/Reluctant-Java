@@ -3,6 +3,7 @@ package msv.example;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Optional;
 
 public class FizzBuzzer {
   private List<Callout> myCalls = new ArrayList<Callout>();
@@ -17,7 +18,18 @@ public class FizzBuzzer {
   }
 
   public String callNum(final int theNumber) {
-    return "" + theNumber;
+    Optional<String> foundCalls = myCalls.stream()
+      .filter( callout -> {
+          return callout.match(theNumber);
+        })
+      .map( callout -> {
+          return callout.getCall();
+        })
+      .reduce( (callout, output) -> {
+          return callout + output;
+        });
+
+    return foundCalls.orElse("" + theNumber);
   }
   
 }

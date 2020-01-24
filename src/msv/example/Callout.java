@@ -9,13 +9,21 @@ public class Callout {
     myCallout = theCall;
   }
 
-  public String match(final int theNumber) {
-    if (theNumber == myNumber) {
-      return myCallout;
-    } else {
-      return null;
-    }
+
+  public boolean match(final int theNumber) {
+    return 0 == theNumber % myNumber;
   }
-  
+
+  public String getCall() {
+    return myCallout;
+  }
+
+  public void setCall(String newCallout) {
+    myCallout = newCallout;
+  }
+
+  public String toString() {
+    return "[Callout value: " + myNumber + " callout: " + myCallout + "]";
+  }
 }
 
