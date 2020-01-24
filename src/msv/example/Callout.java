@@ -4,26 +4,20 @@ public class Callout {
   private final int myNumber;
   private String myCallout;
 
-  public Callout(int theNumber, String theCall) {
+  public Callout(int theNumber, String theCallout) {
     myNumber = theNumber;
-    myCallout = theCall;
+    myCallout = theCallout;
   }
-
 
   public boolean match(final int theNumber) {
-    return 0 == theNumber % myNumber;
+    return  0 == theNumber % myNumber;
   }
 
-  public String getCall() {
+  public String getCallout() {
     return myCallout;
   }
 
-  public void setCall(String newCallout) {
-    myCallout = newCallout;
-  }
-
-  public String toString() {
-    return "[Callout value: " + myNumber + " callout: " + myCallout + "]";
+  public void setCallout(String theCallout) {
+    myCallout = theCallout;
   }
 }
-

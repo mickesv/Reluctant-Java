@@ -1,17 +1,18 @@
 
 
-#+ATTR_ORG: :width 400
+#+ATTR_ORG: :width 300
 [[./Java-for-the-reluctant.png]]
+
 
 * Getting Started: Hello World
 ** C++
 #+BEGIN_SRC cpp
 #include <iostream>
-
 using namespace std;
 
 int main(int argc, char** argv) {
   cout << "Hello World" << endl;
+
   return 0;
 }
 
@@ -22,64 +23,69 @@ int main(int argc, char** argv) {
 ** Java
 #+BEGIN_SRC java :classname HelloWorld
 public class HelloWorld {
-
-public static void main(String[] args) {
-  System.out.println("Hello World");
+  public static void main(String [] args) {
+    System.out.println("Hello World");
+  }
 }
-}
-
 #+END_SRC
 
 #+RESULTS:
 : Hello World
+
+
 * Running Example: FizzBuzz
-- Class: =FizzBuzzer=
-  - take a map of fizzes and buzzes (number . callout)
+** Example output
+1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 
+** Structure
+- create class =FizzBuzzer=
+  - constructor takes a map of fizzes and buzzes (number . callout)
   - default constructor ((3 . fizz) (5 . buzz))
-  - =callNum(int number)=
+  - =callNum(int theNumber)=
   - =list(start, end)=
   - =count(start, end)=
-- =Start::main()=
-* Objects and Classes
-- Classes, files =filename==classname=
-- packages :: directories
-- =main()=
+
+- class =Start=
+  - =Start::main()=
+* Classes and Objects
+- Everything is in a class
+- packages and import
+- =main()= 
 - constructors
 - standard libraries
 - =System.out.println()=
 - arrays
 - templates
-- Everything is in a class!
-- Garbage collector
+- compilation: =javac=
 * Using Objects
-- calls /appear/ to work as in C++
-- java streams api. (requires Java 8 or above)
-- lambda expressions (requires Java 8 or above)
-* "appear to work"
-- *Everything* is a pointer!
+- calling methods
+- java streams API (Requires Java 8)
+- lambda expressions  (Requires Java 8)
+- the importance of =static=
+- calls /appear/ to work as normal.
+* "Appear"?
+- Everything is a pointer!
 
 #+BEGIN_SRC java :classname AlmostNormal :results output
 import msv.example.*;
 
 public class AlmostNormal {
-  public static void main(String [] args) {
+  public static void main(String[] args) {
     int x = 10;
     Callout c = new Callout(5, "Five");
 
-    testFunction1(x, c);
-    System.out.println("X is " + x + " and Callout is " + c);
+    testMethod1(x, c);
+    System.out.println("x is " + x + " and callout is " + c.getCallout());
 
-    testFunction2(c);
-    System.out.println("X is " + x + " and Callout is " + c);
-  
+    testMethod2(c);
+    System.out.println("x is " + x + " and callout is " + c.getCallout());
   }
 
-  public static void testFunction1(int theX, Callout theC) {
+  public static void testMethod1(int theX, Callout theC) {
     theX = 20;
-    theC.setCall("NotFive");
+    theC.setCallout("Not Five");
   }
 
-  public static void testFunction2(Callout theC) {
+  public static void testMethod2(Callout theC) {
     theC = new Callout(30, "Thirty");
   }
 }
@@ -87,5 +93,5 @@ public class AlmostNormal {
 #+END_SRC
 
 #+RESULTS:
-: X is 10 and Callout is [Callout value: 5 callout: NotFive]
-: X is 10 and Callout is [Callout value: 5 callout: NotFive]
+: x is 10 and callout is Not Five
+: x is 10 and callout is Not Five

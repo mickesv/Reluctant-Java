@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public class FizzBuzzer {
   private List<Callout> myCalls = new ArrayList<Callout>();
-  
+
   public FizzBuzzer() {
     myCalls.add(new Callout(3, "Fizz"));
     myCalls.add(new Callout(5, "Buzz"));
@@ -17,13 +17,13 @@ public class FizzBuzzer {
     Collections.addAll(myCalls, theCalls);
   }
 
-  public String callNum(final int theNumber) {
+  public String callNum(int theNumber) {
     Optional<String> foundCalls = myCalls.stream()
       .filter( callout -> {
           return callout.match(theNumber);
         })
       .map( callout -> {
-          return callout.getCall();
+          return callout.getCallout();
         })
       .reduce( (callout, output) -> {
           return callout + output;
@@ -31,5 +31,4 @@ public class FizzBuzzer {
 
     return foundCalls.orElse("" + theNumber);
   }
-  
 }

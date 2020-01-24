@@ -1,24 +1,23 @@
 import msv.example.*;
 
 public class AlmostNormal {
-  public static void main(String [] args) {
+  public static void main(String[] args) {
     int x = 10;
     Callout c = new Callout(5, "Five");
 
-    testFunction1(x, c);
-    System.out.println("X is " + x + " and Callout is " + c);
+    testMethod1(x, c);
+    System.out.println("x is " + x + " and callout is " + c.getCallout());
 
-    testFunction2(c);
-    System.out.println("X is " + x + " and Callout is " + c);
-  
+    testMethod2(c);
+    System.out.println("x is " + x + " and callout is " + c.getCallout());
   }
 
-  public static void testFunction1(int theX, Callout theC) {
+  public static void testMethod1(int theX, Callout theC) {
     theX = 20;
-    theC.setCall("NotFive");
+    theC.setCallout("Not Five");
   }
 
-  public static void testFunction2(Callout theC) {
+  public static void testMethod2(Callout theC) {
     theC = new Callout(30, "Thirty");
   }
 }

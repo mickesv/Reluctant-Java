@@ -1,32 +1,27 @@
 
-import msv.example.Callout;
 import msv.example.FizzBuzzer;
+import msv.example.Callout;
+
 
 public class Start {
-
-  public void testFizzBuzzer(FizzBuzzer theTestObject) {
+  public void testFizzBuzz(FizzBuzzer testObject) {
     for (int i = 0; i < 20; i++) {
-      System.out.println("Calling with " + i + ": " + theTestObject.callNum(i));
+      System.out.println("Calling with " + i + " : " + testObject.callNum(i));
     }    
   }
+  
 
   public static void main(String[] args) {
-    System.out.println("Starting system...");
-
-    // Default constructor
     FizzBuzzer fb1 = new FizzBuzzer();
 
-    // Alternative constructor
     Callout[] calls = new Callout[3];
     calls[0] = new Callout(5, "Fives");
     calls[1] = new Callout(10, "Tens");
-    calls[2] = new Callout(12, "Twelves");    
+    calls[2] = new Callout(12, "Twelves");
+    
     FizzBuzzer fb2 = new FizzBuzzer(calls);
 
-    // Test the fizzbuzzers
-    new Start().testFizzBuzzer(fb1);
-    new Start().testFizzBuzzer(fb2);
-    
-    System.out.println("System ends...");    
+    new Start().testFizzBuzz(fb1);
+    new Start().testFizzBuzz(fb2);        
   }
 }
