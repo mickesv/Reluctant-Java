@@ -1,0 +1,5 @@
+
+
+#+ATTR_ORG: :width 400
+[[./Java-for-the-reluctant.png]]
+
