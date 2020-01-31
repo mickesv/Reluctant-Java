@@ -31,8 +31,6 @@ public class HelloWorld {
 
 #+RESULTS:
 : Hello World
-
-
 * Running Example: FizzBuzz
 ** Example output
 1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 
@@ -95,3 +93,16 @@ public class AlmostNormal {
 #+RESULTS:
 : x is 10 and callout is Not Five
 : x is 10 and callout is Not Five
+* Arrays
+- declare an array =String[] myArray=
+- create array =new String[10]=
+#+BEGIN_SRC java
+    Callout[] calls = new Callout[3];
+    calls[0] = new Callout(5, "Fives");
+    calls[1] = new Callout(10, "Tens");
+    calls[2] = new Callout(12, "Twelves");
+#+END_SRC
+- growing array: =ArrayList=
+  - cast to regular array =myArrayList.toArray(new ArrayType[1]);=
+- method overloading
+- for-each construct =for(Type var : array)=

@@ -4,10 +4,41 @@ import msv.example.Callout;
 
 
 public class Start {
-  public void testFizzBuzz(FizzBuzzer testObject) {
+  public void testCallNum(FizzBuzzer testObject) {
     for (int i = 0; i < 20; i++) {
       System.out.println("Calling with " + i + " : " + testObject.callNum(i));
     }    
+  }
+
+  public void testList(FizzBuzzer testObject) {   
+    String[] retVal = testObject.list(0, 20);
+
+    System.out.print("testing list: [");
+    // for (int i = 0; i < retVal.length ; i++) {
+    //   System.out.print(retVal[i] +" ,");
+    // }
+
+    for (String s : retVal) {
+      System.out.print(s +" ,");      
+    }
+    
+    System.out.println("]");
+  }
+
+  public void testCount(FizzBuzzer testObject) {    
+    System.out.print("Testing count: ");
+    testObject.count(0, 20, System.out);
+  }
+
+  public void testDebugOut(FizzBuzzer testObject) {
+    testObject.debugOut();
+  }
+  
+  public void testFizzBuzz(FizzBuzzer testObject) {
+    testCallNum(testObject);
+    testList(testObject);
+    testCount(testObject);
+    testDebugOut(testObject);
   }
   
 

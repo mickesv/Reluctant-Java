@@ -20,4 +20,8 @@ public class Callout {
   public void setCallout(String theCallout) {
     myCallout = theCallout;
   }
+
+  public String toString() {
+    return "[Callout value: " + myNumber + " Callout: " + myCallout + "]";
+  }
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Optional;
+import java.io.PrintStream;
 
 public class FizzBuzzer {
   private List<Callout> myCalls = new ArrayList<Callout>();
@@ -30,5 +31,36 @@ public class FizzBuzzer {
         });
 
     return foundCalls.orElse("" + theNumber);
+  }
+
+  public String[] list(int start, int end) {
+    ArrayList<String> output = new ArrayList<String>();
+    for(int i = start; i <= end; i++) {
+      output.add(callNum(i));
+    }
+
+    return output.toArray(new String[1]);
+  }
+
+  public void count(int start, int end) {
+    this.count(start, end, System.out);
+  }
+
+  public void count(int start, int end, PrintStream out) {
+    String[] list = list(start, end);
+
+    out.print("[");
+    for(String s : list) {
+      out.print(s + ", ");
+    }
+    out.println("]");
+  }
+
+  public void debugOut() {
+    Callout[] calls = myCalls.toArray(new Callout[1]);
+
+    for(Callout c : calls) {
+      System.out.println(c);
+    }
   }
 }
