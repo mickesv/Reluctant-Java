@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Optional;
 import java.io.PrintStream;
 
-public class FizzBuzzer {
+public class FizzBuzzer implements FizzBuzz {
   private List<Callout> myCalls = new ArrayList<Callout>();
 
   public FizzBuzzer() {
