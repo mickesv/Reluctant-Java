@@ -1,0 +1,10 @@
+* Java for the Reluctant
+#+ATTR_ORG: :width 300
+[[./presentation/Java-for-the-reluctant.png]]
+
+A series of videos to introduce Java for students (at BTH) who already know C++.
+
+The videos are gathered under a playlist on Youtube: [[https://www.youtube.com/playlist?list=PLRyU9jMTRIX7QUrxZF9HNLbdXtiv6F9MT][Java for the Reluctant]]
+
+There is a commit in this repository corresponding to each of the videos. Please see the [[https://github.com/mickesv/Reluctant-Java/commits/master][Commit log]]
+
