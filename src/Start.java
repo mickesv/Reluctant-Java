@@ -2,6 +2,7 @@
 import msv.example.FizzBuzzer;
 import msv.example.Callout;
 import msv.example.*;
+import msv.gui.*;
 
 public class Start {
   public void testCallNum(FizzBuzz testObject) {
@@ -67,5 +68,7 @@ public class Start {
     System.out.println("Starting test with WordCallout");
     FizzBuzz wb = new WordBuzzer();
     new Start().testFizzBuzz(wb);
+
+    FizzGUI gui = new FizzGUI(fb1);
   }
 }

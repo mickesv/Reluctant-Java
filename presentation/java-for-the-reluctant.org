@@ -292,3 +292,6 @@ elosnoc.metsyS ;noisrev dnoceS //
 - =System.console()= =System.console().readLine()= *CAVE* =console()= might return ~null~
 - try-catch, try-catch-finally, try-with-catch-finally
 - many different ways of reading and writing. 
+* Graphical User Interface
+- =java.awt.*=
+- =javax.swing.*=
