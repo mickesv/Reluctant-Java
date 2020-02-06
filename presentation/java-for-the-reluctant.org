@@ -114,3 +114,181 @@ public class AlmostNormal {
 - =String[] s = {"a", "b", "c"}=
 - =@Override=
 - lazy import: =import msv.example.*=
+* Strings
+** A few examples
+#+BEGIN_SRC java
+    return "[Callout value: " + myNumber + " Callout: " + myCallout + "]";
+    System.out.println("Calling with " + i + " : " + testObject.callNum(i));
+    System.out.print(s +" ,");      
+
+  public String callNum(String theNumber) {
+    Optional<String> foundCalls = myCalls.stream()
+      .filter( callout -> { return callout.match(theNumber); })
+      .map( callout -> { return callout.getCallout(); })
+      .reduce( (callout, output) -> { return callout + output; });
+
+    return foundCalls.orElse(theNumber);
+  }
+
+String myString = "hello?";
+#+END_SRC
+
+- *Strings are immutable!*
+- concatenation yields a new string
+- =StringBuilder=
+
+#+BEGIN_SRC java :classname StringExample :results output
+import java.lang.StringBuilder;
+
+public class StringExample {
+  public static void main(String[] args) {
+    StringBuilder sb = new StringBuilder("INITIAL STRING");
+    sb.append(" appended");
+    sb.insert(8, "inserted ");
+
+    String s = sb.toString();
+    System.out.println(s);
+  }
+}
+
+#+END_SRC
+
+#+RESULTS:
+: INITIAL inserted STRING appended
+
+** String Conversions
+- =toString()=
+- number conversions
+#+BEGIN_SRC java :classname NumberConvert :results output
+public class NumberConvert {
+  public static void main(String[] args) {
+    String si = "1234";
+    String sf = "47.11";
+
+    int ii = Integer.parseInt(si);
+    float fi = Float.parseFloat(si);
+    float ff = Float.parseFloat(sf);
+
+    System.out.println(ii + 10);
+    System.out.println(fi + 10);
+    System.out.println(ff + 10);
+  }  
+}
+#+END_SRC
+
+#+RESULTS:
+: 1244
+: 1244.0
+: 57.11
+* Input and Output
+** Console
+#+BEGIN_SRC java :classname ConsoleIOExample :results output
+import java.io.*;
+
+public class ConsoleIOExample {
+  public static void main(String[] args) {
+    // First version
+
+    BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
+
+    System.out.println("Hello?");
+
+    try {
+      String response = cin.readLine();
+      System.out.println("You responded with: " + response);
+    } catch (IOException e) {
+      System.out.println(e);
+    }
+
+    // Second version; System.console
+    String response = System.console().readLine("Hola? ");
+    System.out.println("You responded with: " + response);
+  }  
+}
+#+END_SRC
+
+#+RESULTS:
+
+** Files
+#+BEGIN_SRC java :classname FileIOExample :results output
+import java.io.*;
+import java.util.ArrayList;
+
+public class FileIOExample {
+  public static void main(String[] args) {
+    ArrayList<String> contents = new ArrayList<String>();
+
+    // Read file
+    try (
+      FileReader file = new FileReader("./ConsoleIOExample.java");
+      BufferedReader buf = new BufferedReader(file);
+      ) {
+      String line;
+      while ((line = buf.readLine()) != null) {
+        StringBuilder sb = new StringBuilder(line);
+        contents.add(sb.reverse().toString());
+      }
+    } catch (IOException e) {
+      System.out.println(e);
+    }
+
+    // Screen output
+    for (String l : contents) {
+      System.out.println(l);
+    }
+
+    // Write file, method 1
+    try (
+    FileWriter file = new FileWriter("./outputExample.txt");
+    BufferedWriter buf = new BufferedWriter(file);
+    ) {
+      for(String l : contents) {
+        buf.write(l);
+        buf.newLine();
+        }
+      } catch (IOException e) {
+      }
+
+    // Write file, method 2
+    try (
+      PrintWriter out = new PrintWriter("./outputExample-pw.txt");
+    ) {
+      for(String l : contents) {
+        out.println(l);
+      }
+    } catch(IOException e) {
+    }
+  }
+}
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+;*.oi.avaj tropmi
+
+{ elpmaxEOIelosnoC ssalc cilbup
+{ )sgra ][gnirtS(niam diov citats cilbup  
+noisrev tsriF //    
+
+;))ni.metsyS(redaeRmaertStupnI wen(redaeRdereffuB wen = nic redaeRdereffuB    
+
+;)"?olleH"(nltnirp.tuo.metsyS    
+
+{ yrt    
+;)(eniLdaer.nic = esnopser gnirtS      
+;)esnopser + " :htiw dednopser uoY"(nltnirp.tuo.metsyS      
+{ )e noitpecxEOI( hctac }    
+;)e(nltnirp.tuo.metsyS      
+}    
+
+elosnoc.metsyS ;noisrev dnoceS //    
+;)" ?aloH"(eniLdaer.)(elosnoc.metsyS = esnopser gnirtS    
+;)esnopser + " :htiw dednopser uoY"(nltnirp.tuo.metsyS    
+  }  
+}
+#+end_example
+** Summary
+- =System.out=
+- =System.console()= =System.console().readLine()= *CAVE* =console()= might return ~null~
+- try-catch, try-catch-finally, try-with-catch-finally
+- many different ways of reading and writing. 
